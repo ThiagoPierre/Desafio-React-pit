@@ -1,28 +1,33 @@
-/* const [startDate, setStartDate] = useState(null);
-const [birthDate, setBirthDate] = useState(null);
-import { addDays } from 'date-fns';
-<Col>
-<label className="form-title"> Dia do nascimento </label>
-<DatePicker
-  id="date picker"
-  selected={birthDate}
-  onChange={(date) => setBirthDate(date)}
-  dateFormat="dd/MM/yyyy"
-  name="birthday"
-/>
-</Col>
+/* import React from 'react';
+import DateView from 'react-datepicker';
+import { Field } from 'formik';
 
-<Col>
-<label className="form-title"> Data da Consulta </label>
-<DatePicker
-  id="time picker"
-  selected={startDate}
-  onChange={(date) => setStartDate(date)}
-  showTimeSelect
-  dateFormat="MMMM d, yyyy h:mm aa"
-  minDate={new Date()}
-  maxDate={addDays(new Date(), 20)}
-  timeForm
-  name="appointment"
-/>
-</Col> */
+const DatePicker = (props) => {
+  const { label, name, ...rest } = props;
+  return (
+    <div className="form-control">
+      <label htmlFor={name}>{label}</label>
+      <Field name={name}>
+        {
+          ({ form, field }) => {
+            const { setFieldValue } = form;
+            const { value } = field;
+
+            return (
+              <DateView
+                id={name}
+                {...field}
+                {...rest}
+                selected={value}
+                onChange={(val) => setFieldValue(name, val)}
+              />
+            );
+          }
+        }
+      </Field>
+    </div>
+  );
+};
+
+export default DatePicker;
+ */

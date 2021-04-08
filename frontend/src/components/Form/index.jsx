@@ -1,16 +1,21 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import {
-  Button, Container, Card, Col, Row,
+  Button, Card, Col, Row,
 } from 'react-bootstrap';
-import { useFormik } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import * as Yup from 'yup';
+import DateView from 'react-datepicker';
 
 // Valores iniciais do formik
 const initialValues = {
   name: '',
   birthday: '',
   booking: '',
+  birthDate: '',
 };
 
 // Ao dar submit no formulário, as informações aparecem no console.
@@ -24,71 +29,84 @@ const validationSchema = Yup.object({
   // ------Trocar number por date depois da implementação do date picker--------
   birthday: Yup.number().required('Campo Obrigatório'),
   booking: Yup.number().required('Campo Obrigatório'),
+  birthDate: Yup.date(),
 });
 
 function index() {
   // Configuração para o uso inicial do Formik
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema,
-  });
 
   return (
-    <Container>
-      <Card>
-        <Card.Header>
-          Faça um Agendamento
-        </Card.Header>
-        <Card.Body>
-          <form onSubmit={formik.handleSubmit}>
+    <div>
+      <Card.Header>
+        Faça um Agendamento
+      </Card.Header>
+      <Card.Body>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          validationSchema={validationSchema}
+        >
+          <Form>
             <label className="form-title form-label" htmlFor="name">Nome</label>
-            {/* Formik lida sozinho com os eventos do formulario, com handleChange e valuesname */}
-            <input
+            {/* Formik lida sozinho com os eventos do formulario(handleChange e valuesname) */}
+            <Field
               className="form-control"
               type="text"
               id="name"
               name="name"
-              onChange={formik.handleChange}
-              value={formik.values.name}
-              onBlur={formik.handleBlur}
             />
             {/* Essa função apresenta o valor de erro caso haja um input em branco */}
-            {formik.touched.name && formik.errors.name ? <div className="error">{formik.errors.name}</div> : null }
+            <ErrorMessage name="name" />
             <Row>
               <Col>
                 <label className="form-title"> Dia do nascimento </label>
-                <input
+                <Field
                   className="form-control"
                   type="text"
                   id="birthday"
                   name="birthday"
-                  onChange={formik.handleChange}
-                  value={formik.values.birthday}
-                  onBlur={formik.handleBlur}
                 />
-                {formik.touched.birthday && formik.errors.birthday ? <div className="error">{formik.errors.birthday}</div> : null }
+                <ErrorMessage name="birthday" />
               </Col>
 
               <Col>
                 <label className="form-title"> Data da Consulta </label>
-                <input
+                <Field
                   className="form-control"
                   type="text"
                   id="booking"
                   name="booking"
-                  onChange={formik.handleChange}
-                  value={formik.values.booking}
-                  onBlur={formik.handleBlur}
                 />
-                {formik.touched.booking && formik.errors.booking ? <div className="error">{formik.errors.booking}</div> : null }
+                <ErrorMessage name="booking" />
               </Col>
             </Row>
+            <Row>
+              <label> teste </label>
+              <Field name="birthDate">
+                {
+                  ({ form, field, rest }) => {
+                    const { setFieldValue } = form;
+                    const { value } = field;
+                    return (
+                      <DateView
+                        id="birthDate"
+                        {...field}
+                        {...rest}
+                        selected={value}
+                        onChange={(val) => setFieldValue('birthDate', val)}
+                      />
+                    );
+                  }
+                }
+              </Field>
+
+            </Row>
             <Button type="submit">Agendar</Button>
-          </form>
-        </Card.Body>
-      </Card>
-    </Container>
+          </Form>
+        </Formik>
+      </Card.Body>
+    </div>
+
   );
 }
 export default index;

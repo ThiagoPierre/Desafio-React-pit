@@ -5,11 +5,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './styles/form.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Form from './components/Form';
+import Booking from './pages/Booking';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Form />
+    <Booking />
   </React.StrictMode>,
   document.getElementById('root'),
 );
