@@ -5,3 +5,5 @@ const router = Router();
 
 router.get("/booking", BookingController.index);
 router.post("/booking", BookingController.store);
+
+module.exports = router;
