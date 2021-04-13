@@ -1,12 +1,16 @@
 const mongoose = require ("mongoose");
 
 const BookingSchema = mongoose.Schema( 
-    {
-        name: String,
-        birthDate: Date,
-        birthday: String,
-        booking: String,
-    }
+{  
+    bookday: String,
+    hours:[{
+        hour: String,
+        users: [{
+            name: String,
+            birthday: String
+        }]
+    }]
+}
 )
 
 const BookingModel = mongoose.model("booking", BookingSchema)
