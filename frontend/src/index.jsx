@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles/form.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Booking from './pages/Booking';
+import Routes from './routes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Booking />
+    <Routes />
   </React.StrictMode>,
   document.getElementById('root'),
 );

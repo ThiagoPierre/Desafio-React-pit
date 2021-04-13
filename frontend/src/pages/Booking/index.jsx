@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container, Card } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Form from '../../components/Form';
+import Box from '../../components/Card';
 
 const index = () => (
   <Container>
-    <Card>
+    <Box cardTitle="Faça um agendamento">
       <Form />
-    </Card>
+    </Box>
   </Container>
 );
 

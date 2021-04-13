@@ -8,15 +8,16 @@
   border-color: rgba(0,0,0,.125);
   margin-bottom: 20px;
   height: 35px;
+  margin-left: 5px;
+  margin-right: 5px
 }
 
 /* Temporary Css */
 .form-control{
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 .card{
-  margin-top: 50px;
   width:65%
 }
 

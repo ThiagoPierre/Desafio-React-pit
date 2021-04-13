@@ -1,33 +1,32 @@
-/* import React from 'react';
-import DateView from 'react-datepicker';
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import { Row } from 'react-bootstrap';
 import { Field } from 'formik';
+import DateView from 'react-datepicker';
 
-const DatePicker = (props) => {
-  const { label, name, ...rest } = props;
-  return (
-    <div className="form-control">
-      <label htmlFor={name}>{label}</label>
-      <Field name={name}>
-        {
-          ({ form, field }) => {
-            const { setFieldValue } = form;
-            const { value } = field;
-
-            return (
-              <DateView
-                id={name}
-                {...field}
-                {...rest}
-                selected={value}
-                onChange={(val) => setFieldValue(name, val)}
-              />
-            );
-          }
+const DatePicker = ({ birthId, fieldname }) => (
+  <Row>
+    <Field name={fieldname} className="form-control">
+      {
+        ({ form, field, rest }) => {
+          const { setFieldValue } = form;
+          const { value } = field;
+          return (
+            <DateView
+              id={birthId}
+              {...field}
+              {...rest}
+              selected={value}
+              dateFormat="dd/MM/yyyy"
+              onChange={(val) => setFieldValue(fieldname, val)}
+              autoComplete="off"
+            />
+          );
         }
-      </Field>
-    </div>
-  );
-};
+      }
+    </Field>
+
+  </Row>
+);
 
 export default DatePicker;
- */
