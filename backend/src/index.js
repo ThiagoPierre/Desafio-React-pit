@@ -4,7 +4,7 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
-const BookingRouter = require("./routes/booking.routes");
+const Routes = require ("./routes/users.router")
 
 //importa dotenv para utilizar variáveis de ambiente
 require ('dotenv').config()
@@ -28,7 +28,7 @@ app.get("/", (req,res) => {
 });
 
 // Middleware de rotas, /api/rota
-app.use("/api", BookingRouter);
+app.use("/api", Routes);
 
 // Ouve a porta escolhida, nesse caso 3636
 app.listen(HTTP_PORT, () => {
