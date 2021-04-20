@@ -40,7 +40,7 @@ class UsersController{
                 // Verifica, nos agendamentos realizados, se existem jovens, e quantos são.
                 var isYoung = await UsersModel.find({bookday:data.bookday, hour:data.hour, birthday: {$gt: sixtyDate} })
 
-                if(isYoung.length >= 2 && isYoung.length > 1 && sixtyDate > birthdayFx){ 
+                if(isYoung.length > 1 && sixtyDate > birthdayFx){ 
                     if(isYoung[0].birthday > isYoung[1].birthday) { // Caso hajam 2 jovens, e o primeiro seja o mais novo, será o substituído.
                         const replaced = await UsersModel.findOneAndReplace({bookday:data.bookday, hour:data.hour, birthday: isYoung[0].birthday},
                             {
@@ -60,8 +60,8 @@ class UsersController{
                             })
                             res.send(replaced2)
                     }
-                }else if(isYoung.length > 0 && isYoung.length < 2 && sixtyDate > birthdayFx) { // Se houver apenas 1 jovem, esse será substituído
-                    const newBooking = await UsersModel.replaceOne({bookday:data.bookday, hour:data.hour, birthday: isYoung[0].birthday},
+                }else if(isYoung.length > 0.9  && sixtyDate > birthdayFx) { // Se houver apenas 1 jovem, esse será substituído
+                    const newBooking = await UsersModel.findOneAndReplace({bookday:data.bookday, hour:data.hour, birthday: isYoung[0].birthday},
                         {
                             bookday: data.bookday,
                             hour: data.hour,
@@ -69,7 +69,7 @@ class UsersController{
                             birthday:birthdayFx
                         }
                         )
-                     res.send({newBooking})
+                     res.send(newBooking)
                 }else{ // Caso não hajam jovens e um idoso tente escolher a hora, a hora se encontrará lotada.
                 res.status(400).send({message: 'A hora escolhida não está mais disponível'})
                 }
@@ -89,6 +89,22 @@ class UsersController{
         }catch(e){
             res.status(400).send({ message: e.message})
         }
+    }
+    async update(req, res) {
+        const { 
+            params: { id },
+            body,
+        } = req;
+
+        const user = await UsersModel.findByIdAndUpdate(id, body).lean();
+        console.log(user)
+
+        res.send({
+        user: {
+            ...user,
+            ...body,
+        },
+        });
     }
 }
 module.exports = new UsersController();

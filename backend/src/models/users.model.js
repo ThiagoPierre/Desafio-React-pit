@@ -6,7 +6,8 @@ const UsersSchema = new mongoose.Schema (
         hour: String,
         name: String,
         birthday:Date,
-        isCompleted:{type: Boolean, default: false}
+        isCompleted:{type: Boolean, default: false},
+        obs: {type:String, default: ''}
     }
 );
 
