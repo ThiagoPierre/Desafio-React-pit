@@ -1,32 +1,35 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Row } from 'react-bootstrap';
 import { Field } from 'formik';
 import DateView from 'react-datepicker';
+import pt from 'date-fns/locale/pt-BR';
 
-const DatePicker = ({ birthId, fieldname }) => (
-  <Row>
-    <Field name={fieldname} className="form-control">
-      {
-        ({ form, field, rest }) => {
+const DatePicker = ({
+  minDate, maxDate, name, ...rest
+}) => (
+
+  <Field name={name} className="form-control">
+    {
+        ({ form, field }) => {
           const { setFieldValue } = form;
           const { value } = field;
           return (
             <DateView
-              id={birthId}
+              locale={pt}
+              id={name}
               {...field}
               {...rest}
               selected={value}
-              dateFormat="dd/MM/yyyy"
-              onChange={(val) => setFieldValue(fieldname, val)}
+              onChange={(val) => setFieldValue(name, val)}
               autoComplete="off"
+              dateFormat="dd/MM/yyyy"
+              minDate={minDate}
+              maxDate={maxDate}
             />
           );
         }
       }
-    </Field>
-
-  </Row>
+  </Field>
 );
 
 export default DatePicker;
