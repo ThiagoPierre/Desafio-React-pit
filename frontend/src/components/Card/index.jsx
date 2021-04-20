@@ -1,15 +1,17 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 
 const Box = ({
   cardTitle, children,
 }) => (
-  <Card>
-    <Card.Header>{cardTitle}</Card.Header>
-    <Card.Body>
-      {children}
-    </Card.Body>
-  </Card>
+  <Container>
+    <Card>
+      <Card.Header>{cardTitle}</Card.Header>
+      <Card.Body>
+        {children}
+      </Card.Body>
+    </Card>
+  </Container>
 );
 
 export default Box;

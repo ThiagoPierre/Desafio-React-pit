@@ -1,11 +1,9 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+/* import { Container } from 'react-bootstrap'; */
 import Appointment from '../../components/Appointments';
 
 const index = () => (
-  <Container>
-    <Appointment />
-  </Container>
+  <Appointment />
 );
 
 export default index;
