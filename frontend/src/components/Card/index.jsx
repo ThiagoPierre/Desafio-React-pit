@@ -4,7 +4,7 @@ import { Card, Container } from 'react-bootstrap';
 const Box = ({
   cardTitle, children,
 }) => (
-  <Container>
+  <Container className="cardContainer">
     <Card>
       <Card.Header>{cardTitle}</Card.Header>
       <Card.Body>

@@ -6,25 +6,24 @@
   border-radius: 5px;
   border-width: 1px;
   border-color: rgba(0,0,0,.125);
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   height: 35px;
 }
 
 /* Temporary Css */
 .form-control{
-  margin-bottom: 20px;
+  margin-bottom: 12px!important;
 }
 
-.card{
-  width:65%;
-}
 
 .form{
   display:flex;
 }
 
 .error {
-  color: red
+  color: red!important;
+  margin-bottom: 5px;
+  margin-top: 1px!important;
 }
 
 .completed{
@@ -56,4 +55,8 @@
   padding-top: 25px;
   background-color: rgb(163, 212, 245);
   border-radius: 40px;
+}
+
+.cardContainer{
+  width: 65%;
 }
