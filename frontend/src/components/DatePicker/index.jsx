@@ -4,6 +4,8 @@ import { Field } from 'formik';
 import DateView from 'react-datepicker';
 import pt from 'date-fns/locale/pt-BR';
 
+// Componente genérico para o DatePicker
+
 const DatePicker = ({
   minDate, maxDate, name, ...rest
 }) => (

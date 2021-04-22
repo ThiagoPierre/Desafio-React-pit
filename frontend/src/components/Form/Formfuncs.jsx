@@ -22,7 +22,9 @@ const validationSchema = Yup.object({
 // Manipula os dados recebidos para uma melhor apresentação na aba de agendamentos
 const onSubmit = async (values) => {
   const date = JSON.parse(JSON.stringify(values)); // Recebe em formato ISO8601
-  /* const formatedBookday = format(parseISO(date.bookday), 'dd/MM/yyyy'); */
+  /* Formatação utilizada para melhor gerenciamento do backend, onde será utilizado para operações
+  matemáticas com datas.
+  */
   const formatedBirthday = format(parseISO(date.birthday), 'dd/MM/yyyy');
 
   const newObj = {

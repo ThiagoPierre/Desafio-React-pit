@@ -31,6 +31,7 @@ function index() {
           name="name"
         />
         <ErrorMessage name="name" component="div" className="error" />
+        {/* Recebe a data de nascimento do usuário que deseja agendar a consulta */}
         <label htmlFor="birthday">Data de nascimento</label>
         <DatePicker
           id="birthday"
@@ -43,12 +44,14 @@ function index() {
         <ErrorMessage name="birthday" component="div" className="error" />
         <Row>
           <Col>
+            {/* Recebe o dia da consulta */}
             <label htmlFor="bookday"> Dia da Consulta</label>
             <DatePicker id="bookday" name="bookday" minDate={new Date()} maxDate={addDays(new Date(), 20)} />
             <ErrorMessage name="bookday" component="div" className="error" />
           </Col>
           <Col>
             <label className="form-title form-label" htmlFor="hour"> Hora da consulta</label>
+            {/* Recebe a hora da consulta */}
             <SelectHour name="hour" id="hour" />
             <ErrorMessage name="hour" component="div" className="error" />
           </Col>

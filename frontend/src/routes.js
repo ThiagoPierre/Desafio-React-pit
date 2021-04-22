@@ -4,7 +4,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Appointments from './pages/Appointments';
 import Booking from './pages/Booking';
 import Header from './components/Header';
-import success from './pages/Home/AfterSubmit';
+import success from './pages/afterSubmit';
 
 const routeList = [{
   path: '/schedule',

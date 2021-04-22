@@ -7,25 +7,27 @@ import scheduleContext, { Types } from '../../ScheduleContext';
 import axios from '../../utils/api';
 
 const BookingList = () => {
-  // eslint-disable-next-line no-unused-vars
+  // Utilização do hook useContext concomitantemente com o useReducer
   const [{ bookings }, dispatch] = useContext(scheduleContext);
 
+  // Função utilizada para deletar um agendamento
   const onClickRemove = async (booking) => {
     try {
       await axios.delete(`/booking/${booking._id}`);
-      toast.success('Agendamento removido!');
+      toast.error('Agendamento removido!');
     } catch (e) {
       toast.error(e.message);
     }
     dispatch({ type: Types.DELETE_BOOKING, payload: booking });
   };
 
+  // Função feita para informar da conclusão de uma consulta, baseado em valores booleanos
   const onCheckBooking = async (booking) => {
     try {
       await axios.put(`/booking/${booking._id}`, {
         isCompleted: !booking.isCompleted,
       });
-      toast.success('Agendamento concluído!');
+      toast.success('Consulta concluída!');
     } catch (e) {
       toast.error(e.message);
     }
@@ -35,6 +37,7 @@ const BookingList = () => {
     });
   };
 
+  // Controle do input TextArea
   const onChangeText = (event, booking) => {
     dispatch({
       type: Types.SET_TEXT,
@@ -44,12 +47,15 @@ const BookingList = () => {
       },
     });
   };
+
+  // Submit do input TextArea quando sair do foco do usuário
   const onBlurField = async (booking) => {
     if (booking.obs.trim()) {
       try {
         await axios.put(`/booking/${booking._id}`, {
           ...booking,
         });
+        toast.success('Observação adicionada!');
       } catch (e) {
         toast.error(e.message);
       }
@@ -57,6 +63,7 @@ const BookingList = () => {
       toast.error('Campo vazio!');
     }
   };
+  // Construção da página
   return (
     <Table striped bordered>
       <thead>
@@ -73,7 +80,7 @@ const BookingList = () => {
         {bookings.map((booking) => (
           <tr key={booking._id} className={booking.isCompleted ? 'completed' : ''}>
             <td>
-              {format(parseISO(booking.birthday), 'dd/MM/yyyy')}
+              {format(parseISO(booking.bookday), 'dd/MM/yyyy')}
             </td>
             <td>
               {booking.hour}

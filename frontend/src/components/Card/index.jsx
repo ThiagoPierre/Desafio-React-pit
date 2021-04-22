@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Container } from 'react-bootstrap';
 
+// Componente genérico para Card
 const Box = ({
   cardTitle, children,
 }) => (

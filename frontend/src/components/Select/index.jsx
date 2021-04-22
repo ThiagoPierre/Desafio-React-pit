@@ -4,6 +4,7 @@ import { Field } from 'formik';
 import Hours from './options';
 
 const index = (props) => {
+  // Componente genérico para selecionar a hora do agendamento
   const {
     name, ...rest
   } = props;

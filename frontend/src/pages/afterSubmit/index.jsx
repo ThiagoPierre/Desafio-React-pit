@@ -1,6 +1,8 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
+// O usuário, ao realizar um agendamento com sucesso, é levado para esta página
+
 const index = () => (
   <div>
     <h2 className="success-title">
