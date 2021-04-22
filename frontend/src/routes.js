@@ -7,8 +7,8 @@ import Header from './components/Header';
 import success from './pages/Home/AfterSubmit';
 
 const routeList = [{
-  path: '/enfermeira',
-  name: 'enfermeira',
+  path: '/schedule',
+  name: 'schedule',
   component: Appointments,
 },
 {
