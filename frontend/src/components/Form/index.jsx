@@ -12,9 +12,8 @@ import DatePicker from '../DatePicker';
 import { initialValues, validationSchema, onSubmit } from './Formfuncs';
 import SelectHour from '../Select/index';
 
-function index() {
+function Forms() {
   // Configuração para o uso inicial do Formik
-
   return (
     <Formik
       initialValues={initialValues}
@@ -30,7 +29,7 @@ function index() {
           id="name"
           name="name"
         />
-        <ErrorMessage name="name" component="div" className="error" />
+        <ErrorMessage data-testid="nameError" name="name" component="div" className="error" />
         {/* Recebe a data de nascimento do usuário que deseja agendar a consulta */}
         <label htmlFor="birthday">Data de nascimento</label>
         <DatePicker
@@ -61,4 +60,4 @@ function index() {
     </Formik>
   );
 }
-export default index;
+export default Forms;
