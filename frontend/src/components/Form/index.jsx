@@ -44,15 +44,15 @@ function Forms() {
         <Row>
           <Col>
             {/* Recebe o dia da consulta */}
-            <label htmlFor="bookday"> Dia da Consulta</label>
+            <label htmlFor="bookday">Dia da Consulta</label>
             <DatePicker id="bookday" name="bookday" minDate={new Date()} maxDate={addDays(new Date(), 20)} />
-            <ErrorMessage name="bookday" component="div" className="error" />
+            <ErrorMessage name="bookday" data-testid="dateError" component="div" className="error" />
           </Col>
           <Col>
-            <label className="form-title form-label" htmlFor="hour"> Hora da consulta</label>
+            <label className="form-title form-label" htmlFor="hour">Hora da consulta</label>
             {/* Recebe a hora da consulta */}
             <SelectHour name="hour" id="hour" />
-            <ErrorMessage name="hour" component="div" className="error" />
+            <ErrorMessage name="hour" data-testid="hourError" component="div" className="error" />
           </Col>
         </Row>
         <Button type="submit">Agendar</Button>

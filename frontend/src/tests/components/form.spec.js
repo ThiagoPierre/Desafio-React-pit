@@ -15,8 +15,9 @@ describe('Renders', () => {
   it('should show validation on blur', async () => {
     const { getByLabelText, getByTestId } = render(<Forms />);
 
-    const input = getByLabelText("Nome");
-    fireEvent.blur(input);
+    const nameinput = getByLabelText("Nome");
+    const dateinput = getByLabelText("Hora da consulta");
+    fireEvent.blur(nameinput, dateinput);
 
     await waitFor(() => {
       expect(getByTestId("nameError")).not.toBe(null);
@@ -24,3 +25,22 @@ describe('Renders', () => {
     });
   });
 });
+
+/* jest.mock("react-datepicker", () => (props) => (
+  <input
+    data-testid="mockedDateField"
+    onChange={() => { props.onChange("asdfasd"); }}
+  />
+));
+
+test("should remove date error as we select date", async () => {
+  const { getByText, getAllByTestId, queryByTestId } = render(<Forms />);
+  const button = getByText("Agendar");
+  fireEvent.click(button);
+
+  const mockedDateField = getAllByTestId("mockedDateField");
+  fireEvent.input(mockedDateField, { target: { value: new Date() } });
+  await waitFor(() => {
+    expect(queryByTestId("dateError")).toBe(null);
+  });
+}); */

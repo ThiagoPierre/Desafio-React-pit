@@ -24,7 +24,7 @@ const onSubmit = async (values) => {
 
   try {
     await axios.post('/booking', date);
-    window.open('http://localhost:3000/success', '_self');
+    /* window.open('http://localhost:3000/success', '_self'); */
   } catch (e) {
     toast.error(e.response.data.message);
   }
