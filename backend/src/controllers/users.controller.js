@@ -31,7 +31,7 @@ class UsersController{
                     const newUsers = await UsersModel.create( data );
                     res.send({newUsers});
                 }else{ // Caso hajam 2 agendamentos no dia, passará por mais verificações
-                    // Verifica, nos agendamentos realizados, se existem jovens, e quantos são.
+                    // Verifica, nos agendamentos realizados, se existem jovens, e quantos são, criando uma array com esses jovens.
                     var isYoung = await UsersModel.find({ bookday:data.bookday, hour:data.hour, birthday: {$gt: sixtyDate} });
                     if(isYoung.length === 2 && sixtyDate > data.birthday) { 
                         if(isYoung[0].birthday > isYoung[1].birthday) { // Caso hajam 2 jovens, e o primeiro seja o mais novo, será o substituído.

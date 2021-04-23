@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
+import img from '../../styles/foto.png';
 
 // O usuário, ao realizar um agendamento com sucesso, é levado para esta página
 
@@ -10,15 +11,15 @@ const index = () => (
     </h2>
     <Row className="colorback">
       <Col>
-        <img className="image" src="https://cdnv2.moovin.com.br/bbdu/imagens/produtos/det/adesivo-lembrete-de-higiene-lave-as-maos-bb16bce72ee8f98975fa012cd94f76fb.png" alt="" />
+        <img className="image" src={img} alt="" />
       </Col>
-      <Col>
+      <Col className="listCol">
         <h3>Não se esqueça de continuar tomando os cuidados mesmo depois da vacinação!</h3>
-        <ul>
+        <ul className="listaSuccess">
           <li className="list-item">Lavar frequentemente as mãos com água e sabão</li>
           <li className="list-item">Usar álcool em gel</li>
           <li className="list-item">Evitar tocar olhos, nariz e boca</li>
-          <li className="list-item">Evitar contato</li>
+          <li className="list-item">Evitar contato com outras pessoas</li>
           <li className="list-item">Ficar em casa</li>
           <li className="list-item">Caso precise sair, utilizar a máscara</li>
         </ul>

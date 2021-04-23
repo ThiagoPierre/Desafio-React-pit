@@ -14,7 +14,9 @@ const BookingList = () => {
   const onClickRemove = async (booking) => {
     try {
       await axios.delete(`/booking/${booking._id}`);
-      toast.error('Agendamento removido!');
+      toast.error('Agendamento removido!', {
+        position: toast.POSITION.BOTTOM_LEFT,
+      });
     } catch (e) {
       toast.error(e.message);
     }
@@ -27,7 +29,15 @@ const BookingList = () => {
       await axios.put(`/booking/${booking._id}`, {
         isCompleted: !booking.isCompleted,
       });
-      toast.success('Consulta concluída!');
+      if (booking.isCompleted === true) { // Devolve um toast baseado na situação da checkbox
+        toast.error('Consulta espera conclusão!', {
+          position: toast.POSITION.BOTTOM_LEFT,
+        });
+      } else {
+        toast.success('Consulta concluída!', {
+          position: toast.POSITION.BOTTOM_LEFT,
+        });
+      }
     } catch (e) {
       toast.error(e.message);
     }
@@ -55,7 +65,9 @@ const BookingList = () => {
         await axios.put(`/booking/${booking._id}`, {
           ...booking,
         });
-        toast.success('Observação adicionada!');
+        toast.success('Observação adicionada!', {
+          position: toast.POSITION.BOTTOM_LEFT,
+        });
       } catch (e) {
         toast.error(e.message);
       }
@@ -65,7 +77,7 @@ const BookingList = () => {
   };
   // Construção da página
   return (
-    <Table striped bordered>
+    <Table striped bordered size="sm">
       <thead>
         <tr>
           <th>Agendamento</th>
@@ -77,7 +89,7 @@ const BookingList = () => {
         </tr>
       </thead>
       <tbody>
-        {bookings.map((booking) => (
+        {bookings.length ? bookings.map((booking) => (
           <tr key={booking._id} className={booking.isCompleted ? 'completed' : ''}>
             <td>
               {format(parseISO(booking.bookday), 'dd/MM/yyyy')}
@@ -95,19 +107,25 @@ const BookingList = () => {
                 onChange={(event) => onChangeText(event, booking)}
               />
             </td>
-            <td>
+            <td className="checkboxinput">
               <input
                 onChange={() => onCheckBooking(booking)}
                 checked={booking.isCompleted}
-                className="m-2"
+                className="m-2 "
                 type="checkbox"
               />
             </td>
-            <td>
-              <Button onClick={() => onClickRemove(booking)}>X</Button>
+            <td className="remove-button">
+              <Button variant="outline-secondary" onClick={() => onClickRemove(booking)}>X</Button>
             </td>
           </tr>
-        ))}
+        )) : (
+          <tr>
+            <td colSpan={6} align="center">
+              Nenhum agendamento foi encontrado.
+            </td>
+          </tr>
+        )}
       </tbody>
     </Table>
   );

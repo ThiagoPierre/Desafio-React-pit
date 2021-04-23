@@ -1,6 +1,8 @@
+// Horas possíveis de serem agendadas
+
 const Hours = [
   {
-    key: 'Select an hour', value: '',
+    key: 'Selecione uma hora', value: '',
   },
   {
     key: '00:30', value: '00:30',

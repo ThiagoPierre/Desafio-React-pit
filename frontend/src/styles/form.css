@@ -32,7 +32,7 @@
 }
 
 .table-bordered td, .table-bordered th{
-  border: 1px solid black;
+  border: 1px solid rgb(185, 183, 183);
 }
 
 .success-title{
@@ -40,23 +40,59 @@
   text-align:center
 }
 
+h3{
+  color: #ffefe4
+}
 .list-item{
   margin-bottom: 35px;
   margin-top: 35px;
   font-weight: 4000;
-  font-size:large
+  font-size:23px;
+  color: #ffefe4
 }
 
 .image{
-  margin-bottom:20px
+  margin-bottom:20px;
+  width: 85%;
 }
 
-.colorback{
+ .colorback{
+  background-image: url(Asset\ 51200.png);
   padding-top: 25px;
-  background-color: rgb(163, 212, 245);
   border-radius: 40px;
-}
+} 
 
 .cardContainer{
   width: 65%;
+}
+
+.nurseLink{
+  color: white;
+
+}
+
+.nurseLink:link{
+  text-decoration: none
+}
+
+.checkboxinput{
+  text-align: center!important;
+  width:5%
+}
+
+.remove-button{
+  text-align: center;
+  width:5%
+}
+
+textarea{
+  width:90%
+}
+
+.lista-success{
+  padding-left: 40px
+}
+
+.listCol{
+  padding-left: 0
 }
