@@ -20,15 +20,11 @@ const validationSchema = Yup.object({
 
 // Manipula os dados recebidos para uma melhor apresentação na aba de agendamentos
 const onSubmit = async (values) => {
-  const date = JSON.parse(JSON.stringify(values)); // Recebe em formato ISO8601
-  /* Formatação utilizada para melhor gerenciamento do backend, onde será utilizado para operações
-  matemáticas com datas.
-  */
+  const date = JSON.parse(JSON.stringify(values)); // Recebe em formato ISO8601(String)
 
   try {
     await axios.post('/booking', date);
-    /* window.open('http://localhost:3000/success', '_self'); */
-    toast.success('Agendamento concluído!');
+    window.open('http://localhost:3000/success', '_self');
   } catch (e) {
     toast.error(e.response.data.message);
   }
