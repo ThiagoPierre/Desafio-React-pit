@@ -1,5 +1,4 @@
 import * as Yup from 'yup';
-import { format, parseISO } from 'date-fns';
 import { toast } from 'react-toastify';
 import axios from '../../utils/api';
 
@@ -25,18 +24,10 @@ const onSubmit = async (values) => {
   /* Formatação utilizada para melhor gerenciamento do backend, onde será utilizado para operações
   matemáticas com datas.
   */
-  const formatedBirthday = format(parseISO(date.birthday), 'dd/MM/yyyy');
-
-  const newObj = {
-    bookday: values.bookday,
-    hour: values.hour,
-    name: values.name,
-    birthday: formatedBirthday,
-  };
 
   try {
-    await axios.post('/booking', newObj);
-    window.open('http://localhost:3000/success', '_self');
+    await axios.post('/booking', date);
+    /* window.open('http://localhost:3000/success', '_self'); */
     toast.success('Agendamento concluído!');
   } catch (e) {
     toast.error(e.response.data.message);
