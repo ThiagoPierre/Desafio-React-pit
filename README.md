@@ -1,16 +1,21 @@
-#  Hello There <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">
- I'm Thiago, aka colxa
- 
- ##I'm a student developer from Brazil, currently working for Pitang Agile IT. As an intern, i'm currently working on automating tests using SpecFlow and Selenium, but my real 
- passion is on back-end and front-end developing. You can find me on [![LinkedIn][1.2]][1].
- 
-[1.2]: https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/linkedin-3-16.png (LinkedIn icon without padding)
+# Vaccine Appointment Project
 
-[1]: https://www.linkedin.com/in/thiago-barboza-pierre-b713211a4/
- 
- ## Hobbies :muscle:
- Apart from coding, i really love bodybuilding competitions(yes, the ones with guys in swimsuits), and i also love music! I play a lot of instruments, like the guitar or the bass.
- 
- ## Technologies and Tools :technologist:
- As of now, i'm doing the RocketSeat Ignite course, making my way through ReactJS and Elixir. I've been studying React for a while, so it's the technology i'm most confident on.
- I also have some projects using NodeJS and Express for the back-end, and some using Angular for the front-end too. I'm starting Elixir now, and i'm really excited about it!
+This project was made during the global pandemic, and it's objective was to be able to make a vaccine appointment with a (fake)hospital.
+
+## The project
+
+This project was made using ReactJS/Bootstrap for the front-end part, and NodeJS/Express/MongoDB for the backend. It was a challenge made by the company i now work on as a intern,
+so some rules were made for it to be competitive.
+
+## The rules
+The rules for it were:
+- The appointment must be made in a page, using a form :white_check_mark:
+- There are only 20 available spaces per day :white_check_mark:
+- There are only 2 available spaces per hour :white_check_mark:
+- There must be a way to consult the appointments that were made :white_check_mark:
+- The consulting page must be ordered by day and hour :white_check_mark:
+- The "Nurse" must be capable of checking if the "pacient" has been attended, and leave a comment about it :white_check_mark:
+- When F5ing, the data must not be lost :white_check_mark:
+
+## Changes for the project in the future:
+I plan to make this project bigger and better, fixing stuff i don't like. For instance, the front-end design and usage is really scuffed, so i want to improve that. I like how the back-end is working, but it should have even more improvement in the future
