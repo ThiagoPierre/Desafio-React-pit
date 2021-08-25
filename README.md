@@ -4,8 +4,7 @@ This project was made during the global pandemic, and it's objective was to be a
 
 ## The project
 
-This project was made using ReactJS/Bootstrap for the front-end part, and NodeJS/Express/MongoDB for the backend. It was a challenge made by the company i now work on as a intern,
-so some rules were made for it to be competitive.
+This project was made using ReactJS/Bootstrap for the front-end part, and NodeJS/Express/MongoDB for the backend. It was a challenge made by the company i now work on as an intern, so some rules were made for it to be competitive.
 
 ## The rules
 The rules for it were:
