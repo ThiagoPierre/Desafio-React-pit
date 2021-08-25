@@ -28,7 +28,6 @@
 
 .completed{
   background-color:rgb(200, 230, 200)!important;
-
 }
 
 .table-bordered td, .table-bordered th{
@@ -43,6 +42,7 @@
 h3{
   color: #ffefe4
 }
+
 .list-item{
   margin-bottom: 35px;
   margin-top: 35px;
@@ -50,6 +50,7 @@ h3{
   font-size:23px;
   color: #ffefe4
 }
+
 
 .image{
   margin-bottom:20px;
