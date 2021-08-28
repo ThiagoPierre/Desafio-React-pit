@@ -5,7 +5,7 @@ import {
   Button, Col, Row,
 } from 'react-bootstrap';
 import {
-  Formik, Form, Field, ErrorMessage,
+  Formik, Form, Field,
 } from 'formik';
 import { addDays } from 'date-fns';
 import DatePicker from '../DatePicker';
@@ -21,7 +21,11 @@ function Forms() {
       validationSchema={validationSchema}
     >
       <Form>
-        <label className="form-title form-label" htmlFor="name">Nome</label>
+        <label className="form-title form-label" htmlFor="name">
+          Nome
+          {' '}
+          <span> *</span>
+        </label>
         {/* Recebe o nome do usuário que deseja agendar a consulta */}
         <Field
           className="form-control"
@@ -29,9 +33,11 @@ function Forms() {
           id="name"
           name="name"
         />
-        <ErrorMessage data-testid="nameError" name="name" component="div" className="error" />
         {/* Recebe a data de nascimento do usuário que deseja agendar a consulta */}
-        <label htmlFor="birthday">Data de nascimento</label>
+        <label htmlFor="birthday">
+          Data de nascimento
+          <span> *</span>
+        </label>
         <DatePicker
           id="birthday"
           name="birthday"
@@ -40,22 +46,29 @@ function Forms() {
           showYearDropdown
           dropdownMode="select"
         />
-        <ErrorMessage name="birthday" component="div" className="error" />
         <Row>
           <Col>
             {/* Recebe o dia da consulta */}
-            <label htmlFor="bookday">Dia da Consulta</label>
+            <label htmlFor="bookday">
+              Dia da Consulta
+              {' '}
+              <span> *</span>
+            </label>
             <DatePicker id="bookday" name="bookday" minDate={new Date()} maxDate={addDays(new Date(), 20)} />
-            <ErrorMessage name="bookday" data-testid="dateError" component="div" className="error" />
           </Col>
           <Col>
-            <label className="form-title form-label" htmlFor="hour">Hora da consulta</label>
+            <label className="form-title form-label" htmlFor="hour">
+              Hora da consulta
+              {' '}
+              <span> *</span>
+            </label>
             {/* Recebe a hora da consulta */}
             <SelectHour name="hour" id="hour" />
-            <ErrorMessage name="hour" data-testid="hourError" component="div" className="error" />
           </Col>
         </Row>
-        <Button type="submit">Agendar</Button>
+        <Button type="submit" className="submit-button">
+          Agendar
+        </Button>
       </Form>
     </Formik>
   );

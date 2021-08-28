@@ -1,10 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useContext } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { format, parseISO } from 'date-fns';
+import { FaTrashAlt } from 'react-icons/fa';
 import scheduleContext, { Types } from '../../ScheduleContext';
 import axios from '../../utils/api';
+import './style.css';
+import Header from '../Header';
 
 const BookingList = () => {
   // Utilização do hook useContext concomitantemente com o useReducer
@@ -77,57 +80,64 @@ const BookingList = () => {
   };
   // Construção da página
   return (
-    <Table striped bordered size="sm">
-      <thead>
-        <tr>
-          <th>Agendamento</th>
-          <th>Hora</th>
-          <th>Nome</th>
-          <th>Observações</th>
-          <th>Concluído</th>
-          <th>Remover</th>
-        </tr>
-      </thead>
-      <tbody>
-        {bookings.length ? bookings.map((booking) => (
-          <tr key={booking._id} className={booking.isCompleted ? 'completed' : ''}>
-            <td>
-              {format(parseISO(booking.bookday), 'dd/MM/yyyy')}
-            </td>
-            <td>
-              {booking.hour}
-            </td>
-            <td>
-              {booking.name}
-            </td>
-            <td>
-              <textarea
-                onBlur={() => onBlurField(booking)}
-                value={booking.obs}
-                onChange={(event) => onChangeText(event, booking)}
-              />
-            </td>
-            <td className="checkboxinput">
-              <input
-                onChange={() => onCheckBooking(booking)}
-                checked={booking.isCompleted}
-                className="m-2 "
-                type="checkbox"
-              />
-            </td>
-            <td className="remove-button">
-              <Button variant="outline-secondary" onClick={() => onClickRemove(booking)}>X</Button>
-            </td>
-          </tr>
-        )) : (
-          <tr>
-            <td colSpan={6} align="center">
-              Nenhum agendamento foi encontrado.
-            </td>
-          </tr>
-        )}
-      </tbody>
-    </Table>
+    <div className="schedule-background">
+      <Header />
+      <Container>
+        <table>
+          <thead>
+            <tr>
+              <th>Agendamento</th>
+              <th>Hora</th>
+              <th>Nome</th>
+              <th>Observações</th>
+              <th>Concluído</th>
+              <th>Remover</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookings.length ? bookings.map((booking) => (
+              <tr key={booking._id} className={booking.isCompleted ? 'completed' : ''}>
+                <td>
+                  {format(parseISO(booking.bookday), 'dd/MM/yyyy')}
+                </td>
+                <td>
+                  {booking.hour}
+                </td>
+                <td>
+                  {booking.name}
+                </td>
+                <td>
+                  <textarea
+                    onBlur={() => onBlurField(booking)}
+                    value={booking.obs}
+                    onChange={(event) => onChangeText(event, booking)}
+                  />
+                </td>
+                <td className="checkboxinput">
+                  <input
+                    onChange={() => onCheckBooking(booking)}
+                    checked={booking.isCompleted}
+                    className="m-2 "
+                    type="checkbox"
+                  />
+                </td>
+                <td className="remove-button">
+                  <button type="button" className="remove-button2" onClick={() => onClickRemove(booking)}>
+                    <FaTrashAlt />
+                  </button>
+                </td>
+              </tr>
+            )) : (
+              <tr>
+                <td colSpan={6} align="center">
+                  Nenhum agendamento foi encontrado.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </Container>
+    </div>
   );
 };
 

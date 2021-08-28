@@ -1,9 +1,7 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Appointments from './pages/Appointments';
 import Booking from './pages/Booking';
-import Header from './components/Header';
 import success from './pages/afterSubmit';
 
 const routeList = [{
@@ -23,14 +21,12 @@ const routeList = [{
 
 const routes = () => (
   <BrowserRouter>
-    <Header />
-    <Container>
-      <Switch>
-        {routeList.map((route) => (
-          <Route key={route.path} exact component={route.component} path={route.path} />
-        ))}
-      </Switch>
-    </Container>
+    {/* <Header /> */}
+    <Switch>
+      {routeList.map((route) => (
+        <Route key={route.path} exact component={route.component} path={route.path} />
+      ))}
+    </Switch>
   </BrowserRouter>
 );
 

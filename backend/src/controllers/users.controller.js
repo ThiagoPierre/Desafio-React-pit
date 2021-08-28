@@ -48,7 +48,7 @@ class UsersController{
                             data)
                             res.send(newBooking);
                     }else{ // Caso não hajam jovens e um idoso tente escolher a hora, a hora se encontrará lotada.
-                        res.status(400).send({ message: 'A hora escolhida não possui mais vagas.' });
+                        res.status(400).send({ message: "A hora escolhida não possui mais vagas." });
                         }
                     }
             } else {
