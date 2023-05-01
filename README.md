@@ -17,4 +17,4 @@ The rules for it were:
 - When F5ing, the data must not be lost :white_check_mark:
 
 ## Changes for the project in the future:
-I plan to make this project bigger and better, fixing stuff i don't like. For instance, the front-end design and usage is really scuffed, so i want to improve that. I like how the back-end is working, but it should have even more improvement in the future
+My intention is to scale up and improve this project by addressing some of its current shortcomings. Specifically, I plan on revamping the front-end design and usability, which is currently lacking. Although the back-end is functioning well, I still aim to enhance its performance for optimal results. Ultimately, my objective is to optimize the project's overall functionality and user experience, with the ultimate goal of creating a more polished and satisfying final product.
